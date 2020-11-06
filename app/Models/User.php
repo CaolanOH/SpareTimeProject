@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T11:33:00+00:00
-# @Last modified time: 2020-11-06T16:18:45+00:00
+# @Last modified time: 2020-11-06T18:13:44+00:00
 
 
 
@@ -51,5 +51,27 @@ class User extends Authenticatable
     {
       return $this->belongsToMany('App\Models\Role', 'user_role');
     }
+
+    public function authorizeRoles($roles)
+    {
+      if (is_array($roles)) {
+          return $this->hasAnyRole($roles);
+      }
+      return $this->hasRole($roles);
+    }
+
+    //if its an array this function is used
+    //whereIn allows it to look at lists
+    //switches whether its an array or not
+    public function hasAnyRole($roles)
+    {
+      return null !== $this->roles()->whereIn('name', $roles)->first();
+    }
+
+    public function hasRole($role)
+    {
+      return null !== $this->roles()->where('name', $role)->first();
+    }
+
 
 }
