@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T11:33:00+00:00
-# @Last modified time: 2020-11-06T14:29:44+00:00
+# @Last modified time: 2020-11-06T16:18:45+00:00
 
 
 
@@ -49,7 +49,7 @@ class User extends Authenticatable
     //letting laravel know the relationships
     public function roles()
     {
-      return $this->belongsToMany('App\Models\Role');
+      return $this->belongsToMany('App\Models\Role', 'user_role');
     }
 
 }

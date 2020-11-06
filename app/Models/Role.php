@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T14:16:17+00:00
-# @Last modified time: 2020-11-06T14:31:44+00:00
+# @Last modified time: 2020-11-06T16:18:27+00:00
 
 
 
@@ -18,6 +18,6 @@ class Role extends Model
     //the users that belong to the role
     public function users()
     {
-        return $this->belongsToMany('App\Models\User');
+        return $this->belongsToMany('App\Models\User', 'user_role');
     }
 }

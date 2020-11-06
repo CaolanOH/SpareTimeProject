@@ -1,4 +1,9 @@
 <?php
+# @Date:   2020-11-06T15:46:38+00:00
+# @Last modified time: 2020-11-06T16:13:20+00:00
+
+
+
 
 namespace Database\Seeders;
 
@@ -13,6 +18,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        $this->call(RoleSeeder::class);
+        $this->call(UserSeeder::class);
     }
 }
