@@ -1,4 +1,9 @@
 <?php
+# @Date:   2020-11-06T11:33:00+00:00
+# @Last modified time: 2020-11-06T14:29:44+00:00
+
+
+
 
 namespace App\Models;
 
@@ -40,4 +45,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //letting laravel know the relationships
+    public function roles()
+    {
+      return $this->belongsToMany('App\Models\Role');
+    }
+
 }
