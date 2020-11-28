@@ -32,11 +32,11 @@
                         </div>
                         <div class="form-group">
                             <label for="start_time">Start Time</label>
-                            <input class="form-control" type="time" value="{{ old('start_time') }}" id="example-time-input">
+                            <input class="form-control" type="time" value="{{ old('start_time') }}" id="start_time">
                         </div>
                         <div class="form-group">
                             <label for="end_time">End Time</label>
-                            <input class="form-control" type="time" value="{{ old('end_time') }}" id="example-time-input">
+                            <input class="form-control" type="time" value="{{ old('end_time') }}" id="end_time">
                         </div>
                         <div class="form-group">
                             <label for="date">Date</label>
