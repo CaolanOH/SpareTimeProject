@@ -8,15 +8,52 @@
     <script src='/lib/main.js'></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'timeGridWeek',
+                slotMinTime: '07:00:00',
+                headerToolbar: {
+                    left: 'prevYear,prev,next,nextYear today',
+                    center: 'title',
+                    right: 'dayGridMonth,dayGridWeek,dayGridDay,timeGridWeek'
+                },
 
-      document.addEventListener('DOMContentLoaded', function() {
-        var calendarEl = document.getElementById('calendar');
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+                events: [
+
+                  @foreach ($events as $event)
+                 {
+                   title: '{{ $event->title }}',
+                   start: '{{ $event->start }}',
+                   end: '{{ $event->end }}'
+                 },
+                 @endforeach
+                ],
+
+                footerToolbar: {
+                    left: 'custom1,custom2',
+                    center: '',
+                    right: 'prev,next'
+                },
+
+                customButtons: {
+                    custom1: {
+                        text: 'custom 1',
+                        click: function() {
+                            alert('clicked custom button 1!');
+                        }
+                    },
+                    custom2: {
+                        text: 'custom 2',
+                        click: function() {
+                            alert('clicked custom button 2!');
+                        }
+                    }
+                } // end of custom buttons
+
+            });
+            calendar.render();
         });
-        calendar.render();
-      });
-
     </script>
 
 

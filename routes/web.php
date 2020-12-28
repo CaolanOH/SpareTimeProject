@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T15:46:38+00:00
-# @Last modified time: 2020-11-28T12:29:24+00:00
+# @Last modified time: 2020-11-30T12:02:39+00:00
 
 
 
@@ -34,7 +34,11 @@ Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'in
 Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.home');
 
 
+
 //user routes for events
+
+Route::get('user/home', [UserEventController::class, 'index'])->name('user.home');
+
 Route::get('/user/events', [UserEventController::class, 'index'])->name('user.events.index');
 Route::get('/user/events/create', [UserEventController::class, 'create'])->name('user.events.create');
 Route::get('/user/events/{id}', [UserEventController::class, 'show'])->name('user.events.show');
