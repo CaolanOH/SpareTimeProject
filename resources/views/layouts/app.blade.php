@@ -19,16 +19,6 @@
                     right: 'dayGridMonth,dayGridWeek,dayGridDay,timeGridWeek'
                 },
 
-                events: [
-
-                  @foreach ($events as $event)
-                 {
-                   title: '{{ $event->title }}',
-                   start: '{{ $event->start }}',
-                   end: '{{ $event->end }}'
-                 },
-                 @endforeach
-                ],
 
                 footerToolbar: {
                     left: 'custom1,custom2',
