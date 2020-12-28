@@ -18,7 +18,7 @@
                     center: 'title',
                     right: 'dayGridMonth,dayGridWeek,dayGridDay,timeGridWeek'
                 },
-Test
+
                 events: [
 
                   @foreach ($events as $event)
