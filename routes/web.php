@@ -40,6 +40,7 @@ Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'inde
 Route::get('user/home', [UserEventController::class, 'index'])->name('user.home');
 
 Route::get('/user/events', [UserEventController::class, 'index'])->name('user.events.index');
+Route::get('/user/events', [UserEventController::class, 'eventsTable'])->name('user.events.eventstable');
 Route::get('/user/events/create', [UserEventController::class, 'create'])->name('user.events.create');
 Route::get('/user/events/{id}', [UserEventController::class, 'show'])->name('user.events.show');
 Route::post('/user/events/store', [UserEventController::class, 'store'])->name('user.events.store');

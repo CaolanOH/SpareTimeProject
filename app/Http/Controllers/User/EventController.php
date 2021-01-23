@@ -44,9 +44,22 @@ class EventController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function eventsTable()
+    {
+      $events = Event::all();
+      return view('user.events.eventstable', [
+        'events' => $events
+      ]);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        //
+        return view('user.events.create');
     }
 
     /**
@@ -57,7 +70,24 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+          $request->validate([
+            'title'=> 'required|max:191',
+            'start_date' => 'required|date_format:Y-m-d',
+            'start_time'=>'required|date_format:H:i',
+            'end_time'=>'required|date_format:H:i',
+          ]);
+
+          $event = new Event();
+
+          $start = $request->input('start_date') . 'T' . $request->input('start_time');
+          $end = $request->input('start_date') . 'T' . $request->input('end_time');
+
+          $event->title = $request->input('title');
+          $event->start = $start;
+          $event->end = $end;
+
+          $event->save();
+          return redirect()->route('user.home');
     }
 
     /**
@@ -68,7 +98,10 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+      $event = Event::findOrfail($id);
+      return view('user.events.show',[
+        'event'=>$event
+      ]);
     }
 
     /**
@@ -79,7 +112,10 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-        //
+      $event = Event::findOrfail($id);
+      return view('user.events.edit',[
+        'event' => $event
+      ]);
     }
 
     /**
@@ -91,7 +127,24 @@ class EventController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+        'title'=> 'required|max:191',
+        'start_date' => 'required|date_format:Y-m-d',
+        'start_time'=>'required|date_format:H:i',
+        'end_time'=>'required|date_format:H:i',
+      ]);
+
+      $event = Event::findOrFail($id);
+
+      $start = $request->input('start_date') . 'T' . $request->input('start_time');
+      $end = $request->input('start_date') . 'T' . $request->input('end_time');
+
+      $event->title = $request->input('title');
+      $event->start = $start;
+      $event->end = $end;
+
+      $event->save();
+      return redirect()->route('user.home');
     }
 
     /**
@@ -102,6 +155,8 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-        //
+      $event = Event::findOrFail($id);
+      $event->delete();
+      return redirect()->route('user.events.eventstable');
     }
 }

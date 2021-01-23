@@ -1,4 +1,4 @@
-@extends('layouts.nav')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -19,29 +19,27 @@
                     @else
                     <table id="table-events" class="table table-hover">
                         <thead>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
-                            <th>Date</th>
-                            <th>Commute</th>
-                            <th>Type</th>
+                            <th>Title</th>
+
+                            <th>Start</th>
+                            <th>End</th>
+
                             <th>Actions</th>
                         </thead>
                         <tbody>
                             @foreach ($events as $event)
                             <tr data-id="{{ $event->id }}">
-                                <td>{{ $event->name }}</td>
-                                <td>{{ $event->description }}</td>
-                                <td>{{ $event->start_time }}</td>
-                                <td>{{ $event->end_time }}</td>
-                                <td>{{ $event->date }}</td>
-                                <td>{{ $event->commute }}</td>
-                                <td>{{ $event->type }}</td>
+                                <td>{{ $event->title }}</td>
+
+                                <td>{{ $event->start }}</td>
+                                <td>{{ $event->end }}</td>
+
+
+
                                 <td>
                                     <a href="{{ route('user.events.show', $event->id) }}" class="btn btn-primary">View</a>
-                                    <a href="{{ route('admin.books.edit', $event->id) }}" class="btn btn-warning">Edit</a>
-                                    <form style="display:inline-block" method="POST" action="{{ route('admin.events.destroy', $event->id) }}">
+                                    <a href="{{ route('user.events.edit', $event->id) }}" class="btn btn-warning">Edit</a>
+                                    <form style="display:inline-block" method="POST" action="{{ route('user.events.destroy', $event->id) }}">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="form-control btn btn-danger">Delete</a>
