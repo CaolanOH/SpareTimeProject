@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\Admin\EventController as AdminEventController;
 use App\Http\Controllers\User\EventController as UserEventController;
+use App\Http\Controllers\User\TodoController as UserTodoController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -47,3 +49,11 @@ Route::post('/user/events/store', [UserEventController::class, 'store'])->name('
 Route::get('/user/events/{id}/edit', [UserEventController::class, 'edit'])->name('user.events.edit');
 Route::put('/user/events/{id}', [UserEventController::class, 'update'])->name('user.events.update');
 Route::delete('/user/events/{id}', [UserEventController::class, 'destroy'])->name('user.events.destroy');
+
+//user routes for Todos
+Route::get('/user/todos/create', [UserTodoController::class, 'create'])->name('user.todos.create');
+Route::get('/user/todos/{id}', [UserTodoController::class, 'show'])->name('user.todos.show');
+Route::post('/user/todos/store', [UserTodoController::class, 'store'])->name('user.todos.store');
+Route::get('/user/todos/{id}/edit', [UserTodoController::class, 'edit'])->name('user.todos.edit');
+Route::put('/user/todos/{id}', [UserTodoController::class, 'update'])->name('user.todos.update');
+Route::delete('/user/todos/{id}', [UserTodoController::class, 'destroy'])->name('user.todos.destroy');

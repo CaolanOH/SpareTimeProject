@@ -73,5 +73,10 @@ class User extends Authenticatable
       return null !== $this->roles()->where('name', $role)->first();
     }
 
+    public function todos()
+    {
+      return $this->hasMany('App\Models\Todo');
+    }
+
 
 }

@@ -24,14 +24,14 @@
                   alert('Event: ' + info.event.title);
                 },
 
-                events:
+                events:[
                 @foreach  ($events as $event) {
 
                         title: '{{$event->title}}',
                         start: '{{$event->start}}',
                         end: '{{$event->end}}',
-                    }, <
-                    @endforeach
+                    },
+                @endforeach
                 ],
 
 
