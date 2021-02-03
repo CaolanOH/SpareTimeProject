@@ -13,11 +13,28 @@
             var calendar = new FullCalendar.Calendar(calendarEl, {
                 initialView: 'timeGridWeek',
                 slotMinTime: '07:00:00',
+                editable: true,
+
                 headerToolbar: {
                     left: 'prevYear,prev,next,nextYear today',
                     center: 'title',
                     right: 'dayGridMonth,dayGridWeek,dayGridDay,timeGridWeek'
                 },
+                eventClick: function(event){
+                  alert('Event: ' + info.event.title);
+                },
+
+                events:[
+                @foreach  ($events as $event) {
+
+                        title: '{{$event->title}}',
+                        start: '{{$event->start}}',
+                        end: '{{$event->end}}',
+                    },
+                @endforeach
+                ],
+
+
 
 
                 footerToolbar: {
@@ -77,7 +94,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('user.events.eventstable') }}">Events</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

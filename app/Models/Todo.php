@@ -5,13 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Event extends Model
+class Todo extends Model
 {
     use HasFactory;
 
 
-public function todos()
+public function event()
 {
-  return $this->hasMany('App\Models\Todo', 'user_id');
+  return $this->belongsTo('App\Models\Event');
 }
+
+
 }
