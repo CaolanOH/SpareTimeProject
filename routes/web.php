@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T15:46:38+00:00
-# @Last modified time: 2020-11-30T12:02:39+00:00
+# @Last modified time: 2020-12-28T19:28:32+00:00
 
 
 
@@ -32,6 +32,7 @@ Auth::routes();
 //home page
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//user home pages
 Route::get('/admin/home', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('admin.home');
 Route::get('/user/home', [App\Http\Controllers\User\HomeController::class, 'index'])->name('user.home');
 
