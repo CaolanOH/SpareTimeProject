@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-02-03T13:45:56+00:00
-# @Last modified time: 2021-02-03T14:57:34+00:00
+# @Last modified time: 2021-02-07T12:28:04+00:00
 
 
 
@@ -37,9 +37,12 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request, $id)
     {
-        return view('user.todos.create');
+      $event_id = $id;
+        return view('user.todos.create',[
+          'event_id'=>$event_id
+        ]);
     }
 
     /**
@@ -48,12 +51,14 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $event_id)
     {
          $request->validate([
            'title' => 'required|max:191',
-           'description' => 'required|max:250',
+           'description' => 'required|max:250'
          ]);
+
+
          //$eid = Event::findOrFail($id);
          $todo = new Todo();
 
@@ -62,7 +67,7 @@ class TodoController extends Controller
          $todo->user_id = Auth::id();
          $todo->event_id = $event_id;
          $todo->save();
-         return redirect()->route('user.events.show');
+         return redirect()->route('user.events.show', $event_id);
     }
 
     /**
@@ -75,7 +80,7 @@ class TodoController extends Controller
     {
         $todo = Todo::findOrFail($id);
         return view('user.todos.show',[
-          'todo'->$todo
+          'todo'=>$todo
         ]);
     }
 
@@ -89,7 +94,7 @@ class TodoController extends Controller
     {
       $todo = Todo::findOrFail($id);
       return view('user.todos.edit',[
-        'todo'->$todo
+        'todo'=>$todo
       ]);
     }
 

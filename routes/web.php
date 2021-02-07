@@ -52,9 +52,9 @@ Route::put('/user/events/{id}', [UserEventController::class, 'update'])->name('u
 Route::delete('/user/events/{id}', [UserEventController::class, 'destroy'])->name('user.events.destroy');
 
 //user routes for Todos
-Route::get('/user/todos/create', [UserTodoController::class, 'create'])->name('user.todos.create');
+Route::get('/user/todos/create/{id}', [UserTodoController::class, 'create'])->name('user.todos.create');
 Route::get('/user/todos/{id}', [UserTodoController::class, 'show'])->name('user.todos.show');
-Route::post('/user/todos/store', [UserTodoController::class, 'store'])->name('user.todos.store');
+Route::post('/user/todos/store{id}', [UserTodoController::class, 'store'])->name('user.todos.store');
 Route::get('/user/todos/{id}/edit', [UserTodoController::class, 'edit'])->name('user.todos.edit');
 Route::put('/user/todos/{id}', [UserTodoController::class, 'update'])->name('user.todos.update');
 Route::delete('/user/todos/{id}', [UserTodoController::class, 'destroy'])->name('user.todos.destroy');
