@@ -1,4 +1,9 @@
 <?php
+# @Date:   2021-02-03T13:45:56+00:00
+# @Last modified time: 2021-02-03T14:57:34+00:00
+
+
+
 
 
 namespace App\Http\Controllers\User;
@@ -43,7 +48,7 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
          $request->validate([
            'title' => 'required|max:191',
@@ -55,7 +60,7 @@ class TodoController extends Controller
          $todo->title = $request->input('title');
          $todo->description = $request->input('description');
          $todo->user_id = Auth::id();
-         $todo->event_id = null;
+         $todo->event_id = $event_id;
          $todo->save();
          return redirect()->route('user.events.show');
     }
