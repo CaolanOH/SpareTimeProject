@@ -6,7 +6,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="card">
                 <div class="card-header">
-                    Evenrt: {{ $event->title }}
+                    Event: {{ $event->title }}
                 </div>
 
                 <div class="card-body">
@@ -49,24 +49,26 @@
                     @else
                     <table class="table">
                         <thead>
-                            <th>status</th>
+
                             <th>Title</th>
                             <th>Description</th>
+                            <th>status</th>
                             <th>Actions</th>
                         </thead>
                         <tbody>
                             @foreach ($event->todos as $todo)
                             <tr>
+
+                                <th>{{ $todo->title }}</th>
+                                <th>{{ $todo->description }}</th>
                                 <th>
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
 
                                     </div>
                                 </th>
-                                <th>{{ $todo->title }}</th>
-                                <th>{{ $todo->description }}</th>
                                 <th>
-                                    <form style="display:inline-block" method="POST" action="{{ route('user.todos.destroy', [ 'id' => $event->id, 'rid' => $todo->id]) }}">
+                                    <form style="display:inline-block" method="POST" action="{{ route('user.todos.destroy', [ 'id' => $event->id, 'tid' => $todo->id ]) }}">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="form-control btn btn-danger">Delete</a>

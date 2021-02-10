@@ -127,8 +127,8 @@ class TodoController extends Controller
      */
     public function destroy($id)
     {
-      $review = Todo::findOrFail($id, $rid);
-      $review->delete();
-      return redirect()->route('user.todos.show', $id);
+      $todo = Todo::findOrFail($id, $tid);
+      $todo->delete();
+      return redirect()->route('user.events.show', $id);
     }
 }
