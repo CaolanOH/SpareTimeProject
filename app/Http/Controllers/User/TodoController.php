@@ -125,9 +125,9 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $tid)
     {
-      $todo = Todo::findOrFail($id, $tid);
+      $todo = Todo::findOrFail($tid);
       $todo->delete();
       return redirect()->route('user.events.show', $id);
     }

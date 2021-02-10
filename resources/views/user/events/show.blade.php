@@ -68,7 +68,7 @@
                                     </div>
                                 </th>
                                 <th>
-                                    <form style="display:inline-block" method="POST" action="{{ route('user.todos.destroy', [ 'id' => $event->id, 'tid' => $todo->id ]) }}">
+                                    <form style="display:inline-block" method="POST" action="{{ route('user.todos.destroy', ['id' => $event->id, 'tid' => $todo->id]) }}">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <button type="submit" class="form-control btn btn-danger">Delete</a>

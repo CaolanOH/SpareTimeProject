@@ -10,6 +10,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Auth;
 
 class EventController extends Controller
 {
@@ -99,8 +100,10 @@ class EventController extends Controller
     public function show($id)
     {
       $event = Event::findOrfail($id);
+
       return view('user.events.show',[
-        'event'=>$event
+        'event'=>$event,
+
       ]);
     }
 
