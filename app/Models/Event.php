@@ -12,7 +12,7 @@ class Event extends Model
 
 public function todos()
 {
-  return $this->hasMany('App\Models\Todo', 'event_id');
+  return $this->hasMany('App\Models\Todo');
 }
 
 }

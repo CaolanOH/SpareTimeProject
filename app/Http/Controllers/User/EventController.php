@@ -75,7 +75,7 @@ class EventController extends Controller
             'title'=> 'required|max:191',
             'start_date' => 'required|date_format:Y-m-d',
             'start_time'=>'required|date_format:H:i',
-            'end_time'=>'required|date_format:H:i',
+            'end_time'=>'required|date_format:H:i'
           ]);
 
           $event = new Event();
@@ -134,7 +134,7 @@ class EventController extends Controller
         'title'=> 'required|max:191',
         'start_date' => 'required|date_format:Y-m-d',
         'start_time'=>'required|date_format:H:i',
-        'end_time'=>'required|date_format:H:i',
+        'end_time'=>'required|date_format:H:i'
       ]);
 
       $event = Event::findOrFail($id);

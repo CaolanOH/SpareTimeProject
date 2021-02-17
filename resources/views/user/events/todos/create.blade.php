@@ -17,7 +17,7 @@
                 </ul>
               </div>
             @endif
-            <form class="" action="{{route('user.todos.store', $event_id)}}" method="post">
+            <form class="" action="{{route('user.events.todos.store', $event_id)}}" method="post">
               <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
               <div class="form-group">
