@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->group(function() {
+
 Route::get('/events', [APIEventController::class, 'index']);
 Route::get('/events/{id}', [APIEventController::class, 'show']);
 Route::post('/events', [APIEventController::class, 'store']);
@@ -29,8 +30,8 @@ Route::put('/events/{id}', [APIEventController::class, 'update']);
 Route::delete('/events/{id}', [APIEventController::class, 'destroy']);
 
 Route::get('/todos', [APITodoController::class, 'index']);
-Route::post('/event{id}/todos', [APIEventController::class, 'store']);
-Route::delete('/todos{id}', [APIEventController::class, 'destroy']);
+Route::post('/events/{id}/todos', [APITodoController::class, 'store']);
+Route::delete('/todos/{id}', [APITodoController::class, 'destroy']);
 
 
 });

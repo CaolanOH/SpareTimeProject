@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Event;
 use App\Models\Todo;
 use Illuminate\Support\Facades\Validator;
+use Auth;
 
 class TodoController extends Controller
 {
@@ -17,7 +18,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-      $todos = Todo::all()->load('events');
+      $todos = Todo::all();
       return response()->json([
         'status'=>'success',
         'data'=>$todos
@@ -40,7 +41,7 @@ class TodoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $event_id)
     {
       $rules =[
         'title' => 'required|max:191',
@@ -48,7 +49,7 @@ class TodoController extends Controller
       ];
 
         $validator = Validator::make($request->all(), $rules);
-        if($validator->fails){
+        if($validator->fails()){
             return response()->json($validator->errors(), 422);
         }
 
