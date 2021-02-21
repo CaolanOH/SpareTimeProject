@@ -1,6 +1,6 @@
 <?php
 # @Date:   2020-11-06T11:33:00+00:00
-# @Last modified time: 2020-11-06T18:13:44+00:00
+# @Last modified time: 2021-02-07T12:53:52+00:00
 
 
 
@@ -76,6 +76,11 @@ class User extends Authenticatable
     public function todos()
     {
       return $this->hasMany('App\Models\Todo');
+    }
+
+    public function events()
+    {
+      return $this->belongsToMany('App\Models\Event', 'user_event');
     }
 
 
