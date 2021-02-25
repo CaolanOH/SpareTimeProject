@@ -40,7 +40,7 @@ class TodoController extends Controller
     public function create(Request $request, $id)
     {
       $event_id = $id;
-        return view('user.todos.create',[
+        return view('user.events.todos.create',[
           'event_id'=>$event_id
         ]);
     }
@@ -66,6 +66,7 @@ class TodoController extends Controller
          $todo->description = $request->input('description');
          $todo->user_id = Auth::id();
          $todo->event_id = $event_id;
+         $todo->status = 'ongoing';
          $todo->save();
          return redirect()->route('user.events.show', $event_id);
     }
@@ -78,10 +79,7 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        $todo = Todo::findOrFail($id);
-        return view('user.todos.show',[
-          'todo'=>$todo
-        ]);
+
     }
 
     /**
@@ -90,10 +88,13 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id, $tid)
     {
-      $todo = Todo::findOrFail($id);
-      return view('user.todos.edit',[
+      $event_id = $id;
+      $todo = Todo::findOrFail($tid);
+
+      return view('user.events.todos.edit',[
+        'event_id'=>$event_id,
         'todo'=>$todo
       ]);
     }
@@ -105,7 +106,7 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $todo, $event_id)
     {
       $request->validate([
         'title' => 'required|max:191',
@@ -114,14 +115,15 @@ class TodoController extends Controller
 
 
 
-      $todo = Todo::findOFail($id);
+      $todo = Todo::findOrFail($todo);
 
       $todo->title = $request->input('title');
       $todo->description = $request->input('description');
-      $todo->user_id = $this->Auth::user('id');
-      $todo->event = $event_id;
+      $todo->user_id = Auth::id();
+      $todo->event_id = $event_id;
+
       $todo->save();
-      return redirect()->route('user.events.show');
+      return redirect()->route('user.events.show', $event_id);
     }
 
     /**
@@ -130,10 +132,10 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $tid)
     {
-      $review = Todo::findOrFail($id, $rid);
-      $review->delete();
-      return redirect()->route('user.todos.show', $id);
+      $todo = Todo::findOrFail($tid);
+      $todo->delete();
+      return redirect()->route('user.events.show', $id);
     }
 }

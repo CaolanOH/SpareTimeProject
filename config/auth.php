@@ -1,4 +1,9 @@
 <?php
+# @Date:   2020-11-06T15:46:38+00:00
+# @Last modified time: 2021-02-25T16:21:57+00:00
+
+
+
 
 return [
 
@@ -42,7 +47,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'token',
+            'driver' => 'passport',
             'provider' => 'users',
             'hash' => false,
         ],

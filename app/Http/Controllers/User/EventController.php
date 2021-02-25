@@ -10,6 +10,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Auth;
 
 class EventController extends Controller
 {
@@ -74,7 +75,7 @@ class EventController extends Controller
             'title'=> 'required|max:191',
             'start_date' => 'required|date_format:Y-m-d',
             'start_time'=>'required|date_format:H:i',
-            'end_time'=>'required|date_format:H:i',
+            'end_time'=>'required|date_format:H:i'
           ]);
 
           $event = new Event();
@@ -99,8 +100,10 @@ class EventController extends Controller
     public function show($id)
     {
       $event = Event::findOrfail($id);
+
       return view('user.events.show',[
-        'event'=>$event
+        'event'=>$event,
+
       ]);
     }
 
@@ -131,7 +134,7 @@ class EventController extends Controller
         'title'=> 'required|max:191',
         'start_date' => 'required|date_format:Y-m-d',
         'start_time'=>'required|date_format:H:i',
-        'end_time'=>'required|date_format:H:i',
+        'end_time'=>'required|date_format:H:i'
       ]);
 
       $event = Event::findOrFail($id);
