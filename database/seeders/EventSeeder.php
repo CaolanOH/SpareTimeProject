@@ -30,6 +30,7 @@ class EventSeeder extends Seeder
         $event->title = "Interim Presentation";
         $event->start = "2020-11-30T15:30:00";
         $event->end = "2020-11-30T16:30:00";
+        
         $event->save();
 
         //tuesday
