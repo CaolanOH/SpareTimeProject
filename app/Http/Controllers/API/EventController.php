@@ -57,7 +57,7 @@ class EventController extends Controller
         $event->title = $request->input('title');
         $event->start = $start;
         $event->end = $end;
-
+        $event->status = 'ongoing';
         $event->save();
 
         return response()->json([
@@ -122,7 +122,7 @@ class EventController extends Controller
           $event->title = $request->input('title');
           $event->start = $start;
           $event->end = $end;
-
+          $event->status = "ongoing";
           $event->save();
 
           return response()->json([

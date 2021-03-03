@@ -24,13 +24,14 @@ class EventSeeder extends Seeder
         $event->title = "Meeting with supervisor";
         $event->start = "2020-11-30T09:30:00";
         $event->end = "2020-11-30T10:30:00";
+        $event->status = "ongoing";
         $event->save();
 
         $event = new Event();
         $event->title = "Interim Presentation";
         $event->start = "2020-11-30T15:30:00";
         $event->end = "2020-11-30T16:30:00";
-        
+        $event->status = "ongoing";
         $event->save();
 
         //tuesday
@@ -38,18 +39,21 @@ class EventSeeder extends Seeder
         $event->title = "WAF";
         $event->start = "2020-12-01T09:00:00";
         $event->end = "2020-12-01T11:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         $event = new Event();
         $event->title = "Interactice Graphics";
         $event->start = "2020-12-01T11:00:00";
         $event->end = "2020-12-01T13:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         $event = new Event();
         $event->title = "Business & Entrepreneurship";
         $event->start = "2020-12-01T14:00:00";
         $event->end = "2020-12-01T15:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         //wednesday
@@ -57,6 +61,7 @@ class EventSeeder extends Seeder
         $event->title = "Interactice Graphics";
         $event->start = "2020-12-02T12:00:00";
         $event->end = "2020-12-02T13:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         //thursday
@@ -64,18 +69,21 @@ class EventSeeder extends Seeder
         $event->title = "Interaction Design";
         $event->start = "2020-12-03T09:00:00";
         $event->end = "2020-12-03T10:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         $event = new Event();
         $event->title = "Computer Networks";
         $event->start = "2020-12-03T11:00:00";
         $event->end = "2020-12-03T12:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         $event = new Event();
         $event->title = "Business & Entrepreneurship";
         $event->start = "2020-12-03T14:00:00";
         $event->end = "2020-12-03T15:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         //friday
@@ -83,12 +91,14 @@ class EventSeeder extends Seeder
         $event->title = "Computer Networks";
         $event->start = "2020-12-04T12:00:00";
         $event->end = "2020-12-04T14:00:00";
+        $event->status = "ongoing";
         $event->save();
 
         $event = new Event();
         $event->title = "Interaction Design";
         $event->start = "2020-12-04T14:30:00";
         $event->end = "2020-12-04T16:30:00";
+        $event->status = "ongoing";
         $event->save();
     }
 }
