@@ -104,7 +104,7 @@ class EventController extends Controller
 
         if($event === null) {
           return response()->json([
-            'status' => 'Book not found!',
+            'status' => 'Event not found!',
             'data' => null
           ],404);
         }

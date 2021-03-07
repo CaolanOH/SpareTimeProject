@@ -64,7 +64,7 @@ class TodoController extends Controller
 
         return response()->json([
           'status' => 'success',
-          'data' => $todo->load('events')
+          'data' => $todo
         ], 200);
     }
 
