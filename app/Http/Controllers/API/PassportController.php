@@ -1,6 +1,6 @@
 <?php
 # @Date:   2021-02-25T16:24:31+00:00
-# @Last modified time: 2021-02-25T17:42:32+00:00
+# @Last modified time: 2021-03-10T14:44:22+00:00
 
 
 
@@ -11,6 +11,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\User;
+use App\Models\Role;
 
 class PassportController extends Controller
 {
@@ -31,6 +32,8 @@ class PassportController extends Controller
           'email' => $request->email,
           'password' => bcrypt($request->password)
       ]);
+
+      $user->roles()->attach(Role::where('name', 'user')->first());
 
       $token = $user->createToken('sparetime-api')->accessToken;
       return response()->json(['token' => $token], 200);
