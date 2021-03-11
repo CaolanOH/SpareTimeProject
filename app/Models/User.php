@@ -76,12 +76,12 @@ class User extends Authenticatable
 
     public function todos()
     {
-      return $this->hasMany('App\Models\Todo');
+      return $this->hasMany('App\Models\Todo', 'user_id');
     }
 
     public function events()
     {
-      return $this->belongsToMany('App\Models\Event', 'user_event');
+      return $this->hasMany('App\Models\Event', 'user_id');
     }
 
 

@@ -10,6 +10,7 @@ namespace App\Http\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class EventController extends Controller
@@ -21,10 +22,11 @@ class EventController extends Controller
      */
     public function index()
     {
-        $events = Event::all()->load('todos');
+        $events = Event::where('user_id', Auth::id())->get()
+                        ->load('todos');
         return response()->json([
           'status'=>'success',
-          'data'=>$events
+          'data' => $events
         ], 200);
     }
 
@@ -57,6 +59,7 @@ class EventController extends Controller
         $event->title = $request->input('title');
         $event->start = $start;
         $event->end = $end;
+        $event->user_id= Auth::id();
         $event->status = 'ongoing';
         $event->save();
 
@@ -122,6 +125,7 @@ class EventController extends Controller
           $event->title = $request->input('title');
           $event->start = $start;
           $event->end = $end;
+          $event->user_id= Auth::id();
           $event->status = "ongoing";
           $event->save();
 

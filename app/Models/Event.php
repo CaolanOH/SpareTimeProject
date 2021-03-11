@@ -14,10 +14,14 @@ class Event extends Model
 {
     use HasFactory;
 
+public function user()
+{
+  return $this->belongsTo('App\Models\User', 'user_id');
+}
 
 public function todos()
 {
-  return $this->hasMany('App\Models\Todo');
+  return $this->hasMany('App\Models\Todo', 'event_id');
 }
 
 }

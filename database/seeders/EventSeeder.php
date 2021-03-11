@@ -25,6 +25,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-11-30T09:30:00";
         $event->end = "2020-11-30T10:30:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         $event = new Event();
@@ -32,6 +33,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-11-30T15:30:00";
         $event->end = "2020-11-30T16:30:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         //tuesday
@@ -40,6 +42,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-01T09:00:00";
         $event->end = "2020-12-01T11:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         $event = new Event();
@@ -47,6 +50,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-01T11:00:00";
         $event->end = "2020-12-01T13:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         $event = new Event();
@@ -54,6 +58,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-01T14:00:00";
         $event->end = "2020-12-01T15:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         //wednesday
@@ -62,6 +67,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-02T12:00:00";
         $event->end = "2020-12-02T13:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         //thursday
@@ -70,6 +76,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-03T09:00:00";
         $event->end = "2020-12-03T10:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         $event = new Event();
@@ -77,6 +84,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-03T11:00:00";
         $event->end = "2020-12-03T12:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         $event = new Event();
@@ -84,6 +92,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-03T14:00:00";
         $event->end = "2020-12-03T15:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         //friday
@@ -92,6 +101,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-04T12:00:00";
         $event->end = "2020-12-04T14:00:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
 
         $event = new Event();
@@ -99,6 +109,7 @@ class EventSeeder extends Seeder
         $event->start = "2020-12-04T14:30:00";
         $event->end = "2020-12-04T16:30:00";
         $event->status = "ongoing";
+        $event->user_id = 2;
         $event->save();
     }
 }
