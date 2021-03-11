@@ -16,9 +16,9 @@ class TodoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-      $todos = Todo::all();
+      $todos = Todo::where('event_id', $id)->get();
       return response()->json([
         'status'=>'success',
         'data'=>$todos
@@ -97,9 +97,35 @@ class TodoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $eid, $tid)
     {
-        //
+
+
+
+      $rules =[
+        'title' => 'required|max:191',
+        'description' => 'required|max:250',
+        'status' => 'required|max:191'
+      ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return response()->json($validator->errors(), 422);
+        }
+
+        $todo = Todo::find($tid);
+
+        $todo->title = $request->input('title');
+        $todo->description = $request->input('description');
+        $todo->user_id = Auth::id();
+        $todo->event_id = $eid;
+        $todo->status = $request->input('status');
+        $todo->save();
+
+        return response()->json([
+          'status' => 'success',
+          'data' => $todo
+        ], 200);
     }
 
     /**
@@ -111,7 +137,8 @@ class TodoController extends Controller
     public function destroy($id)
     {
       $todo = Todo::find($id);
-      if($event === null){
+
+      if($todo === null){
         $statusMsg = 'Todo not found';
         $statusCode = 404;
       }

@@ -39,7 +39,8 @@ Route::middleware('auth:api')->group(function () {
     Route::put('/events/{id}', [APIEventController::class, 'update']);
     Route::delete('/events/{id}', [APIEventController::class, 'destroy']);
 
-    Route::get('/todos', [APITodoController::class, 'index']);
+    Route::get('/events/{id}/todos', [APITodoController::class, 'index']);
     Route::post('/events/{id}/todos', [APITodoController::class, 'store']);
+    Route::put('/events/{eid}/todos/{tid}', [APITodoController::class, 'update']);
     Route::delete('/todos/{id}', [APITodoController::class, 'destroy']);
 });
