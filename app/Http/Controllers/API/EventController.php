@@ -116,6 +116,7 @@ class EventController extends Controller
             'start_date' => 'required|date_format:Y-m-d',
             'start_time'=>'required|date_format:H:i',
             'end_time'=>'required|date_format:H:i',
+            'status'=>'max:191'
           ];
           $validator = Validator::make($request->all(), $rules);
 
@@ -126,7 +127,7 @@ class EventController extends Controller
           $event->start = $start;
           $event->end = $end;
           $event->user_id= Auth::id();
-          $event->status = "ongoing";
+          $event->status = $request->input('status');
           $event->save();
 
           return response()->json([
